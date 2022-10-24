@@ -19,8 +19,9 @@
                             @endforeach
                         </div>
                     @endif
-                    <form action="{{ url('employee/store') }}" method="POST">
+                    <form action="{{ url('update-employee/' . $employee->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <select name="company_id" id="company" class="form-control">
                             <option value="">-- Select Company--
                             </option>
@@ -32,29 +33,28 @@
                         </select>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name">
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $employee->first_name }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name">
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $employee->last_name }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ $employee->email }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone">
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ $employee->phone }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Branch</label>
-                            <input type="text" class="form-control" id="branch" name="branch">
+                            <input type="text" class="form-control" id="branch" name="branch" value="{{ $employee->branch }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">department</label>
-                            <input type="text" class="form-control" id="department" name="department">
+                            <input type="text" class="form-control" id="department" name="department" value="{{ $employee->department }}">
                         </div>
-
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

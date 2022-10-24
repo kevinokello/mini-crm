@@ -37,13 +37,14 @@
                                         <td>{{ $item->company_id }}</td>
                                         <td>{{ $item->branch }}</td>
                                         <td>{{ $item->department }}</td>
-                                        <td>
+                              <td>
                                             <a href="{{ url('edit-employee/' . $item->id) }}"><i class="fas fa-pen"></i></a>
-                                            <a href="href="{{ url('delete-employee/' . $item->id) }}""
+                                            <a href="{{ url('delete-employee/' . $item->id) }}"
                                                 class="btn btn-danger sm" title="Delete Data" id="delete">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
+                                </tr>
                                     </tr>
                                 @empty
 

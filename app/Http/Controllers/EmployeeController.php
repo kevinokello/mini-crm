@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ class EmployeeController extends Controller
         $employee = new Employee;
         $employee->first_name = $data['first_name'];
         $employee->last_name = $data['last_name'];
-        // $employee->company_id = $data['company_id'];
+        $employee->company_id = $data['company_id'];
         $employee->email = $data['email'];
         $employee->phone = $data['phone'];
         $employee->branch = $data['branch'];
@@ -87,16 +88,15 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
         $employee = Employee::find($employee_id);
-
         $employee->first_name = $data['first_name'];
         $employee->last_name = $data['last_name'];
-        // $employee->company_id = $data['company_id'];
+        $employee->company_id = $data['company_id'];
         $employee->email = $data['email'];
         $employee->phone = $data['phone'];
         $employee->branch = $data['branch'];
         $employee->department = $data['department'];
         $employee->update();
-        return redirect('dashboard.company');
+        return redirect('employees');
     }
 
     /**
@@ -110,9 +110,9 @@ class EmployeeController extends Controller
         $employee = Employee::find($employee_id);
         if ($employee) {
             $employee->delete();
-            return redirect('dashboard.employee');
+            return redirect('employees');
         } else {
-            return redirect('dashboard.employee')->with('message', 'No employee id found');
+            return redirect('employees')->with('message', 'No employee id found');
         }
     }
 }

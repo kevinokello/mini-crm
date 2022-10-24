@@ -36,14 +36,14 @@
                                         <td>{{ $item->branch }}</td>
                                         <td>{{ $item->department }}</td>
                                         <td>{{ $item->website }}</td>
-                                        
+
                                         <td>
                                             <img src="{{ asset('uploads/company/' . $item->logo) }}"
                                                 width="50px" height="40px" alt="Img">
                                         </td>
                                         <td>
                                             <a href="{{ url('edit-company/' . $item->id) }}"><i class="fas fa-pen"></i></a>
-                                            <a href="href="{{ url('delete-company/' . $item->id) }}""
+                                            <a href="{{ url('delete-company/' . $item->id) }}"
                                                 class="btn btn-danger sm" title="Delete Data" id="delete">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>

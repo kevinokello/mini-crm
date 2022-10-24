@@ -6,6 +6,7 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\CompanyFormRequest;
 
 class CompanyController extends Controller
@@ -29,7 +30,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-       
+
         return view('dashboard.company.add');
     }
 
@@ -94,7 +95,6 @@ class CompanyController extends Controller
     {
         $data = $request->validated();
         $company = Company::find($company_id);
-
         $company->name = $data['name'];
         $company->email = $data['email'];
         $company->branch = $data['branch'];
@@ -103,7 +103,6 @@ class CompanyController extends Controller
 
 
         if ($request->hasfile('logo')) {
-
             $destination = 'uploads/company' . $company->logo;
             if (File::exists($destination)) {
                 File::delete($destination);
@@ -112,9 +111,9 @@ class CompanyController extends Controller
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/company/', $filename);
             $company->image = $filename;
-            $company->update();
-            return redirect('dashboard.company');
         }
+        $company->update();
+        return redirect('companies');
     }
 
     /**
@@ -133,9 +132,9 @@ class CompanyController extends Controller
             }
             // $company->employees()->delete();
             $company->delete();
-            return redirect('dashboard.company');
+            return redirect('companies');
         } else {
-            return redirect('dashboard.company')->with('message', 'No category id found');
+            return redirect('companies')->with('message', 'No category id found');
         }
     }
 }

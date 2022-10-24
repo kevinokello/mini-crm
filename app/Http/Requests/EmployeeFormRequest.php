@@ -34,10 +34,10 @@ class EmployeeFormRequest extends FormRequest
                 'string',
                 'max:200'
             ],
-            // 'company_id' => [
-            //     'nullable',
-            //     'integer'
-            // ],
+            'company_id' => [
+                'nullable',
+                'integer'
+            ],
             'email' => [
                 'required',
                 'string',

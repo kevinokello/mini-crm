@@ -18,28 +18,28 @@
                             @endforeach
                         </div>
                     @endif
-                    <form action="{{ url('company/store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf                          
+                    <form action="{{ url('update-company/' . $company->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         @method('PUT')
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $company->name }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email" value="{{ $company->email }}">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Branch</label>
-                            <input type="text" class="form-control" id="branch" name="branch">
+                            <input type="text" class="form-control" id="branch" name="branch" value={{ $company->branch }}>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">department</label>
-                            <input type="text" class="form-control" id="department" name="department">
+                            <input type="text" class="form-control" id="department" name="department" value={{ $company->department }}>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">website</label>
-                            <input type="text" class="form-control" id="website" name="website">
+                            <input type="text" class="form-control" id="website" name="website" value={{ $company->website }}>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">logo</label>
